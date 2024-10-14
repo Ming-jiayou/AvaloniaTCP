@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaTCP.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaTCP.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+	<StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<Label Content="IP地址：" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+			<TextBox Text="{Binding IpAddress}" Width="100"/>
+			<Label Content="端口号：" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+			<TextBox Text="{Binding Port}" Width="100"/>
+			<Button Content="启动服务器" Command="{Binding StartServerCommand}" Width="100" Height="30" Margin="10"/>
+			<Button Content="启动客户端" Command="{Binding StartClientCommand}" Width="100" Height="30" Margin="10"/>
+			<TextBox Text="{Binding Text}" Width="100"/>
+			<Button Content="发送消息Client" Command="{Binding SendMessageToServerCommand}" Width="100" Height="30" Margin="10"/>
+			<Button Content="发送消息Server" Command="{Binding SendMessageToClientCommand}" Width="100" Height="30" Margin="10"/>
+			<Button Content="关闭客户端" Command="{Binding CloseClientCommand}" Width="100" Height="30" Margin="10"/>
+		</StackPanel>
+		<StackPanel>
+			<Expander Header="Click to Expand">
+				<TextBlock Text="{Binding Message}" Margin="10"/>
+			</Expander>
+		</StackPanel>
+	</StackPanel>
+</UserControl>
